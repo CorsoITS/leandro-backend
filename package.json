@@ -1,0 +1,28 @@
+{
+  "name": "leandro-backend",
+  "version": "1.0.0",
+  "description": "primo commit di prova",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CorsoITS/leandro-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CorsoITS/leandro-backend/issues"
+  },
+  "homepage": "https://github.com/CorsoITS/leandro-backend#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3"
+  }
+}
