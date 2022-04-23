@@ -22,7 +22,7 @@ routerAuth.post('/', async (req, res) => {
            token:  token.token
           }).send()
         }else{
-          const del = await deleteToken(token.token)
+          const _ = await deleteToken(token.token)
           try {
             token = await generatorToken(id_utente)
           } catch (error) {
@@ -35,7 +35,7 @@ routerAuth.post('/', async (req, res) => {
       }}
     }catch (error) {
         return res.status(401).json({
-          messaggio: 'failes'
+          messaggio: 'login failed'
       })
     }
   }
