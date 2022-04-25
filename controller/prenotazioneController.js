@@ -69,7 +69,7 @@ class prenotazioneController{
             req.params.id=req.query.q;
             return prenotazioneController.get(req,res);
         }
-        let result=await Prenotazione.lista();
+        let result=await Prenotazione.lista(req.sede_id);
 
         return res.json(result);
     } 

@@ -21,10 +21,10 @@ const updatePrenotazione = async (id, data, sede_id, somministrazione_id, note, 
     return res.affectedRows === 1;
   }
 
-const listaPrenotazione = async () => {
+const listaPrenotazione = async (sede_id) => {
     const connection = await getConnection();
-    let query='SELECT * FROM prenotazione';
-    const [rows] = await connection.query(query);
+    let query='SELECT * FROM prenotazione WHERE sede_id = ?';
+    const [rows] = await connection.query(query, [sede_id]);
     return rows;
   }
 

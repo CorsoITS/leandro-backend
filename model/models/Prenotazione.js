@@ -68,8 +68,8 @@ class Prenotazione{
     }
 
 
-    static async lista () {
-        let listaPrenotazioneDAO = await listaPrenotazione();
+    static async lista (sede_id) {
+        let listaPrenotazioneDAO = await listaPrenotazione(sede_id);
         let res=[];
 
         listaPrenotazioneDAO.forEach( e => {

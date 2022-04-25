@@ -92,7 +92,7 @@ const operatoreDeleteById = async (id_operatore) => {
 async function getSedeOperatoreById(id){
   const conn = await getConnection();
   const [oper_sede] = await conn.query('SELECT sede_id FROM opertore WHERE id = ?', [id]);
-  return oper_sede[0];
+  return oper_sede[0].sede_id;
 }
 
 async function getUtenteByUsername(username) {

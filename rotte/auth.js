@@ -24,7 +24,7 @@ routerAuth.post('/', async (req, res) => {
         }else{
           const _ = await deleteToken(token.token)
           try {
-            token = await generatorToken(id_utente)
+            token = await generatorToken(utente.id)
           } catch (error) {
             console.log(error);
           }
