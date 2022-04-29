@@ -104,6 +104,40 @@ public class somministrazioneRepository
 
         return result;
     }
+    public IEnumerable<Somministrazione> GetSomministrazioneByUsername(string username)
+    {
+        var result = new List<Somministrazione>();
+
+        appDb.Connection.Open();
+        var command = appDb.Connection.CreateCommand();
+        command.CommandText = "select * from somministrazione where opertore_id=(select id FROM opertore where username = @username)";
+        var parameter = new MySqlParameter()
+        {
+            ParameterName = "username",
+            DbType = System.Data.DbType.String,
+            Value = username
+        };
+        command.Parameters.Add(parameter);
+        var reader = command.ExecuteReader();
+
+        while (reader.Read())
+        {
+            var somministrazione = new Somministrazione()
+            {
+                id = reader.GetInt16("id"),
+                vaccino = reader.GetString("vaccino"),
+                dose = reader.GetString("dose"),
+                data_somministrazione = reader.GetDateTime("data_somministrazione"),
+                note = reader.GetString("note"),
+                opertore_id = reader.GetInt16("opertore_id"),
+                persona_id = reader.GetInt16("persona_id")
+            };
+            result.Add(somministrazione);
+        }
+        appDb.Connection.Close();
+
+        return result;
+    }
 
     public Somministrazione GetSomministrazione(int? id)
     {

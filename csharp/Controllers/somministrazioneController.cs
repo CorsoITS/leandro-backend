@@ -29,6 +29,11 @@ public class somministrazioneController : ControllerBase{
         return somministrazioneService.GetSomministrazioneByDose(dose);
     }
 
+    [HttpGet("operatoreUsername/{username}")]
+    public IEnumerable<Somministrazione> GetSomministrazioneByUsername(string username){
+        return somministrazioneService.GetSomministrazioneByUsername(username);
+    }
+
     [HttpPost]
     public IActionResult Create(Somministrazione somministrazione){
         var created = somministrazioneService.Create(somministrazione);

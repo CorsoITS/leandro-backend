@@ -22,6 +22,9 @@ public class somministrazioneService{
     public IEnumerable<Somministrazione> GetSomministrazioneByDose(string dose){
         return somministrazioneRepository.GetSomministrazioneByDose(dose);
     }
+    public IEnumerable<Somministrazione> GetSomministrazioneByUsername(string username){
+        return somministrazioneRepository.GetSomministrazioneByUsername(username);
+    }
 
 
 
