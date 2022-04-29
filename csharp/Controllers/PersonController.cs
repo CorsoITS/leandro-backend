@@ -1,0 +1,55 @@
+using Microsoft.AspNetCore.Mvc;
+using _7_WebApi.Service;
+using _7_WebApi.Models;
+
+namespace _7_WebApi.Controllers;
+
+[ApiController]
+[Route("[controller]")]
+public class PersonController : ControllerBase{
+
+    private PersonService personService = new PersonService();
+
+    [HttpGet]
+    public IEnumerable<Person> GetPeople(){
+        return personService.GetPeople();
+    }
+
+    [HttpGet("{id}")]
+    public Person GetPerson(int id){
+        return personService.GetPerson(id);
+    }
+
+    [HttpPost]
+    public IActionResult Create(Person persona){
+        var created = personService.Create(persona);
+        if (created){
+            return Ok();
+        }
+        else{
+            return BadRequest();
+        }
+    }
+
+    [HttpPut]
+    public IActionResult Update(Person persona){
+        var updated = personService.Update(persona);
+        if (updated){
+            return Ok();
+        }
+        else{
+            return BadRequest();
+        }
+    }
+
+    [HttpDelete("{id}")]
+    public IActionResult Delete(int id){
+        var deleted = personService.Delete(id);
+        if (deleted){
+            return Ok();
+        }
+        else{
+            return BadRequest();
+        }
+    }
+}
