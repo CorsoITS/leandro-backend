@@ -25,7 +25,7 @@ public class somministrazioneRepository
                 id = reader.GetInt16("id"),
                 vaccino = reader.GetString("vaccino"),
                 dose = reader.GetString("dose"),
-                data_somministrazione = reader.GetDateTime("data_Somministrazione"),
+                data_somministrazione = reader.GetDateTime("data_somministrazione"),
                 note = reader.GetString("note"),
                 opertore_id = reader.GetInt16("opertore_id"),
                 persona_id = reader.GetInt16("persona_id")
@@ -58,7 +58,7 @@ public class somministrazioneRepository
                 id = reader.GetInt16("id"),
                 vaccino = reader.GetString("vaccino"),
                 dose = reader.GetString("dose"),
-                data_somministrazione = reader.GetDateTime("data_Somministrazione"),
+                data_somministrazione = reader.GetDateTime("data_somministrazione"),
                 note = reader.GetString("note"),
                 opertore_id = reader.GetInt16("opertore_id"),
                 persona_id = reader.GetInt16("persona_id")
@@ -93,7 +93,7 @@ public class somministrazioneRepository
         var parameterdata_somministrazione = new MySqlParameter()
         {
             ParameterName = "data_somministrazione",
-            DbType = System.Data.DbType.String,
+            DbType = System.Data.DbType.DateTime,
             Value = somministrazione.data_somministrazione
         };
         command.Parameters.Add(parameterdata_somministrazione);

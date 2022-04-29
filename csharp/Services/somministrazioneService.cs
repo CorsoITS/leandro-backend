@@ -6,6 +6,8 @@ namespace _7_WebApi.Service;
 public class somministrazioneService{
 
     private somministrazioneRepository somministrazioneRepository = new somministrazioneRepository();
+    private opertoreRepository opertoreRepository = new opertoreRepository();
+    private PersonRepository personRepository = new PersonRepository();
 
     public IEnumerable<Somministrazione> GetSomministrazione(){
         return somministrazioneRepository.GetSomministrazione();
@@ -19,7 +21,11 @@ public class somministrazioneService{
         if (somministrazioneRepository.GetSomministrazione(somministrazione.id) == null){
             if (somministrazione.vaccino.Length > 0 & somministrazione.dose.Length > 0){
                 if(somministrazione.data_somministrazione <= DateTime.Now){
-                    return somministrazioneRepository.Create(somministrazione);
+                    if(opertoreRepository.GetOpertoreBool(somministrazione.opertore_id) & personRepository.GetPersonBool(somministrazione.persona_id)){
+                        return somministrazioneRepository.Create(somministrazione);
+                    }else{
+                        return false;
+                    }
                 }else{
                     return false;
                 }

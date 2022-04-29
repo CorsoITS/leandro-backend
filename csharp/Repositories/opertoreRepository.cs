@@ -71,11 +71,46 @@ public class opertoreRepository
         return null;
     }
 
+    public bool GetOpertoreBool(int? id)
+    {
+        appDb.Connection.Open();
+        var command = appDb.Connection.CreateCommand();
+        command.CommandText = "select id, ruolo, nome, cognome, username, password, sede_id from opertore where id=@id";
+        var parameter = new MySqlParameter()
+        {
+            ParameterName = "id",
+            DbType = System.Data.DbType.Int16,
+            Value = id
+        };
+        command.Parameters.Add(parameter);
+        var reader = command.ExecuteReader();
+
+        while (reader.Read())
+        {
+            var opertore = new Opertore()
+            {
+                id = reader.GetInt16("id"),
+                ruolo = reader.GetString("ruolo"),
+                nome = reader.GetString("nome"),
+                cognome = reader.GetString("cognome"),
+                username = reader.GetString("username"),
+                password = reader.GetString("password"),
+                sede_id = reader.GetInt16("sede_id"),
+            };
+            appDb.Connection.Close();
+            return true;
+        }
+
+        appDb.Connection.Close();
+        return false;
+    }
+
+
     public bool Create(Opertore opertore)
     {
         appDb.Connection.Open();
         var command = appDb.Connection.CreateCommand();
-        command.CommandText = "insert opertore opertore (ruolo, nome, cognome, username, password, sede_id) values (@id, @ruolo, @nome, @cognome, @username, @password, @sede_id)";
+        command.CommandText = "insert into opertore (ruolo, nome, cognome, username, password, sede_id) values (@ruolo, @nome, @cognome, @username, @password, @sede_id)";
         var parameterruolo = new MySqlParameter()
         {
             ParameterName = "ruolo",

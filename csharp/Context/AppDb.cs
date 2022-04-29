@@ -7,7 +7,7 @@ public class AppDb
 
     public MySqlConnection Connection { get; }
 
-    private const string defaultConnectionString = "server=localhost;database=piattaforma_vaccini_v2;uid=root;pwd=Leandro1999!;";
+    private const string defaultConnectionString = "server=localhost;database=piattaforma_vaccini_v2;uid=root;pwd=;";
 
     public AppDb()
     {

@@ -65,6 +65,37 @@ public class PersonRepository
         return null;
     }
 
+    public bool GetPersonBool(int? id)
+    {
+        appDb.Connection.Open();
+        var command = appDb.Connection.CreateCommand();
+        command.CommandText = "select id, nome, cognome, codice_fiscale from persona where id=@id";
+        var parameter = new MySqlParameter()
+        {
+            ParameterName = "id",
+            DbType = System.Data.DbType.Int16,
+            Value = id
+        };
+        command.Parameters.Add(parameter);
+        var reader = command.ExecuteReader();
+
+        while (reader.Read())
+        {
+            var persona = new Person()
+            {
+                id = reader.GetInt16("id"),
+                nome = reader.GetString("nome"),
+                cognome = reader.GetString("cognome"),
+                codice_fiscale = reader.GetString("codice_fiscale"),
+            };
+            appDb.Connection.Close();
+            return true;
+        }
+
+        appDb.Connection.Close();
+        return false;
+    }
+
     public bool Create(Person persona)
     {
         appDb.Connection.Open();
