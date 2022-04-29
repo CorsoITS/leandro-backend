@@ -16,6 +16,14 @@ public class somministrazioneService{
     public Somministrazione GetSomministrazione(int id){
         return somministrazioneRepository.GetSomministrazione(id);
     }
+    public IEnumerable<Somministrazione> GetSomministrazioneByVaccino(string vaccino){
+        return somministrazioneRepository.GetSomministrazioneByVaccino(vaccino);
+    }
+    public IEnumerable<Somministrazione> GetSomministrazioneByDose(string dose){
+        return somministrazioneRepository.GetSomministrazioneByDose(dose);
+    }
+
+
 
     public bool Create(Somministrazione somministrazione){
         if (somministrazioneRepository.GetSomministrazione(somministrazione.id) == null){

@@ -15,8 +15,18 @@ public class somministrazioneController : ControllerBase{
     }
 
     [HttpGet("{id}")]
-    public Somministrazione GetSede(int id){
+    public Somministrazione GetSomministrazione(int id){
         return somministrazioneService.GetSomministrazione(id);
+    }
+
+    [HttpGet("vaccino/{vaccino}")]
+    public IEnumerable<Somministrazione> GetSomministrazione(string vaccino){
+        return somministrazioneService.GetSomministrazioneByVaccino(vaccino);
+    }
+
+    [HttpGet("dose/{dose}")]
+    public IEnumerable<Somministrazione> GetSomministrazioneByDose(string dose){
+        return somministrazioneService.GetSomministrazioneByDose(dose);
     }
 
     [HttpPost]
