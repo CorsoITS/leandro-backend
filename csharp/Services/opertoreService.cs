@@ -27,7 +27,7 @@ public class opertoreService{
 
     public bool Create(Opertore opertore){
         if (opertoreRepository.GetOpertore(opertore.id) == null){
-            if (opertore.nome.Length > 0 & opertore.cognome.Length > 0 & opertore.username.Length > 0 & opertore.password.Length > 0){
+            if (opertore.nome.Length > 0 && opertore.cognome.Length > 0 && opertore.username.Length > 0 && opertore.password.Length > 0){
                 if(sedeRepository.GetSedeBool(opertore.sede_id)){
                     opertore.password = HashPassword(opertore.password);
                     return opertoreRepository.Create(opertore);

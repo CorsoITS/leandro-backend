@@ -17,7 +17,7 @@ public class sedeService{
 
     public bool Create(Sede sede){
         if (sedeRepository.GetSede(sede.id) == null){
-            if (sede.nome.Length > 0 & sede.citta.Length > 0 & sede.indirizzo.Length > 0){
+            if (sede.nome.Length > 0 && sede.citta.Length > 0 && sede.indirizzo.Length > 0){
                 return sedeRepository.Create(sede);
             }
             else{

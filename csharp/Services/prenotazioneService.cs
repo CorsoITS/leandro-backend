@@ -20,7 +20,7 @@ public class prenotazioneService{
     public bool Create(Prenotazione prenotazione){
         if (prenotazioneRepository.GetPrenotazione(prenotazione.id) == null){
             if(prenotazione.data >= DateTime.Now){
-                if(personRepository.GetPersonBool(prenotazione.persona_id) & sedeRepository.GetSedeBool(prenotazione.sede_id)){
+                if(personRepository.GetPersonBool(prenotazione.persona_id) && sedeRepository.GetSedeBool(prenotazione.sede_id)){
                     return prenotazioneRepository.Create(prenotazione);
                 }else{
                     return false;

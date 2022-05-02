@@ -30,9 +30,9 @@ public class somministrazioneService{
 
     public bool Create(Somministrazione somministrazione){
         if (somministrazioneRepository.GetSomministrazione(somministrazione.id) == null){
-            if (somministrazione.vaccino.Length > 0 & somministrazione.dose.Length > 0){
+            if (somministrazione.vaccino.Length > 0 && somministrazione.dose.Length > 0){
                 if(somministrazione.data_somministrazione <= DateTime.Now){
-                    if(opertoreRepository.GetOpertoreBool(somministrazione.opertore_id) & personRepository.GetPersonBool(somministrazione.persona_id)){
+                    if(opertoreRepository.GetOpertoreBool(somministrazione.opertore_id) && personRepository.GetPersonBool(somministrazione.persona_id)){
                         return somministrazioneRepository.Create(somministrazione);
                     }else{
                         return false;

@@ -17,7 +17,7 @@ public class PersonService{
 
     public bool Create(Person persona){
         if (personRepository.GetPerson(persona.id) == null){
-            if (persona.nome.Length > 0 & persona.cognome.Length > 0 & persona.codice_fiscale.Length == 16){
+            if (persona.nome.Length > 0 && persona.cognome.Length > 0 && persona.codice_fiscale.Length == 16){
                 return personRepository.Create(persona);
             }
             else{
